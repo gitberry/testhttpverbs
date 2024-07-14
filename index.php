@@ -3,13 +3,12 @@
 $debugit = false;
 try {
     header("Content-Type: application/json");
-    deebug("Starting api.php...");
+    deebug("Starting http verb test...");
 
     $method = $_SERVER['REQUEST_METHOD'];
     $path = explode('/', trim($_SERVER['PATH_INFO'], '/'));
     $tag = isset($path[1]) ? $path[1] : null;
     
-    //$database = new Database();
     deebug("Verb Test:");
     
     switch ($method) {
@@ -40,8 +39,10 @@ try {
             break;
     }
 } catch (Exception $e) {
-        echo "Some error:[".$e."]";
-    }
+    echo "Some error:[".$e."]";
+}
+deebug("End Verb Test");
+
 // ----------------------- end main
 
 function deebug($givenString) {
@@ -60,5 +61,6 @@ function deebug($givenString) {
 // bonus: does it "handle" in anyway non standard HTTP verbs? Let's try:
 // curl --header "Content-Type: application/json" --request XYZ --data '{"message":"whatever"}' https://yourdomain.abc
 // 
+
 ?>
 
